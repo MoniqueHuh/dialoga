@@ -11,7 +11,7 @@ public class botoes : MonoBehaviour
         if (currentState == Gamemaneger.GameState.MenuPrincipal)
         {
             Debug.LogWarning("Already in main menu!");
-            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+            Gamemaneger.Instance.LoadScene("SampleScene");
             
         }
     }
