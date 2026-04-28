@@ -73,41 +73,7 @@ public class Gamemaneger : MonoBehaviour
             Debug.LogError($"State {newState} has no associated scene!");
         }
     }
-
-    /// <summary>
-    /// Método público para outros scripts solicitarem mudança de cena
-    /// Valida se a mudança é permitida no estado atual
-    /// </summary>
-    public void RequestSceneChange(string sceneName)
-    {
-        bool allowChange = false;
-
-        switch (currentState)
-        {
-            case GameState.Iniciando:
-                if (sceneName == "_Boot")
-                    allowChange = true;
-                break;
-            case GameState.MenuPrincipal:
-                if (sceneName == "SampleScene")
-                    allowChange = true;
-                break;
-            case GameState.Gameplay:
-                if (sceneName == "_Boot")
-                    allowChange = true;
-                break;
-        }
-
-        if (allowChange)
-        {
-            LoadScene(sceneName);
-        }
-        else
-        {
-            Debug.LogWarning($"Scene change not allowed from current state: {currentState}");
-        }
-    }
-
+    
     /// <summary>
     /// Método privado que efetivamente carrega a cena
     /// Apenas o GameManager pode acessar o SceneManager

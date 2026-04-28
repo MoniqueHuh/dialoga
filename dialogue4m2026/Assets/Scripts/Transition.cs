@@ -4,31 +4,17 @@ using System.Collections;
 
 public class Transition : MonoBehaviour
 {
-    [SerializeField] private Image transitionImage;
+    [SerializeField] private string sceneName;
     [SerializeField] private float displayDuration = 2f;
 
     void Start()
     {
-        
-        if (transitionImage != null)
-        {
-            transitionImage.enabled = true;
-        }
-
-        
-        StartCoroutine(ShowTransitionAndChangeScene());
+        Invoke("Mov", displayDuration);
     }
-    
-    private IEnumerator ShowTransitionAndChangeScene()
-    {
-        Debug.Log("Transition started...");
-        
-        // Aguarda o tempo especificado
-        yield return new WaitForSeconds(displayDuration);
 
-        Debug.Log("Transition complete, changing to Menu Principal...");
+    public void Mov()
+    {
+        Gamemaneger.Instance.LoadScene(sceneName);
         
-        // Solicita ao GameManager para mudar de estado
-        Gamemaneger.Instance.ChangeGameState(Gamemaneger.GameState.MenuPrincipal);
     }
 }
