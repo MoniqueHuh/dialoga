@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -91,5 +92,13 @@ public class PlayerController : MonoBehaviour
     public void SetMaxSpeed(float max) => maxSpeed = max;
     public void SetCameraRelative(bool enabled) => cameraRelativeMovement = enabled;
     public void SetCameraTransform(Transform t) => cameraTransform = t;
+
+    private void Update()
+    {
+        if(Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            InteractOM.Interact();
+        }
+    }
 }
 
