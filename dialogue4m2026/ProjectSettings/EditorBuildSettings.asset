@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Splash.unity
     guid: 4a2afa0c423a8d24ea920709ab4f0edf
+  - enabled: 1
+    path: Assets/Scenes/MenuPrincipal.unity
+    guid: 65acabcd0c50c0e49894778ccccba010
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

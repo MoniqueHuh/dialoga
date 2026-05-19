@@ -47,7 +47,6 @@ public class Gamemaneger : MonoBehaviour
 
         ChangeState(GameState.Iniciando);
         SceneManager.LoadScene("_Boot");
-        ChangeState(GameState.MenuPrincipal);
     }
 
     void Update()
@@ -75,13 +74,26 @@ public class Gamemaneger : MonoBehaviour
     }
     
     /// <summary>
-    /// Método privado que efetivamente carrega a cena
+    /// Método público que efetivamente carrega a cena
     /// Apenas o GameManager pode acessar o SceneManager
     /// </summary>
     public void LoadScene(string sceneName)
     {
         Debug.Log($"Loading scene: {sceneName}");
         SceneManager.LoadScene(sceneName);
+
+        if (sceneName == "SampleScene")
+        { 
+            ChangeState(GameState.Gameplay);
+        }
+        else if (sceneName == "MenuPrincipal")
+        {
+            ChangeState(GameState.MenuPrincipal);
+        }
+        else if (sceneName == "_Boot" && sceneName == "Splash")
+        {
+            ChangeState(GameState.Iniciando);
+        }
 
         // Atualiza o estado baseado na cena carregada
         foreach (var kvp in stateToScene)
