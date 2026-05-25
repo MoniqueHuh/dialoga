@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
         // Good defaults for a rolling ball
         rb.interpolation = RigidbodyInterpolation.Interpolate;
     }
-
     /// <summary>
     /// Callback expected to be wired from a PlayerInput (Behavior = Invoke Unity Events)
     /// or by using the old SendMessage style with the Input System. The action should
