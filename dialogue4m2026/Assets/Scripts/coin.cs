@@ -10,22 +10,22 @@ public class Coin : MonoBehaviour
 
             if(player != null)
             {
-                player.AddCoin();
+                AddCoin();
             }
 
             Destroy(gameObject);
         }
     }
+    private int coins = 0;
+
+    public void AddCoin()
+    {
+        coins++;
+
+        Debug.Log("Moedas: " + coins);
+
+
+        PlayerOM.CollectCoin(coins);
+    }
 }
 
-private int coins = 0;
-
-public void AddCoin()
-{
-    coins++;
-
-    Debug.Log("Moedas: " + coins);
-
-
-    PlayerObserverManager.CollectCoin(coins);
-}

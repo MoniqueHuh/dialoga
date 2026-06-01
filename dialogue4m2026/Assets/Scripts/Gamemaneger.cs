@@ -121,4 +121,13 @@ public class Gamemaneger : MonoBehaviour
     {
         return SceneManager.GetActiveScene().name;
     }
+
+    public void LoadAddtive(string SceneName)
+    {
+        if (SceneName != null)
+        {
+            SceneManager.LoadScene(SceneName, LoadSceneMode.Additive);
+        }
+    }
 }
+

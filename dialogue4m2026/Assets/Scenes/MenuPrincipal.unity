@@ -690,6 +690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::botoes
   sceneName: 
+  addSceneName: 
 --- !u!114 &1529088002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -964,6 +965,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::botoes
   sceneName: SampleScene
+  addSceneName: GUI
 --- !u!114 &2144910799
 MonoBehaviour:
   m_ObjectHideFlags: 0

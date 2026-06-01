@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,9 +19,11 @@ public class PlayerController : MonoBehaviour
     // internal storage for input
     private Vector2 moveInput = Vector2.zero;
     private Rigidbody rb;
+    private PlayerInput playerInput;
 
     void Awake()
     {
+        playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody>();
         if (cameraTransform == null && Camera.main != null)
             cameraTransform = Camera.main.transform;
@@ -28,6 +31,13 @@ public class PlayerController : MonoBehaviour
         // Good defaults for a rolling ball
         rb.interpolation = RigidbodyInterpolation.Interpolate;
     }
+
+    private void OnEnable()
+    {
+        playerInput.actions.FindAction("Move").Enable();
+       
+    }
+
     /// <summary>
     /// Callback expected to be wired from a PlayerInput (Behavior = Invoke Unity Events)
     /// or by using the old SendMessage style with the Input System. The action should
