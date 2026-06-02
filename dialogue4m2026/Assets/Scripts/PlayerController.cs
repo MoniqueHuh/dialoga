@@ -34,20 +34,20 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        playerInput.actions.FindAction("Move").Enable();
-       
+        playerInput.actions.FindAction("Move").performed += OnMove;
+       playerInput.actions.FindAction("Move").canceled += context => { moveInput = Vector2.zero; };
+       playerInput.actions.FindAction("Interact").performed += OnInteract;
     }
 
-    /// <summary>
-    /// Callback expected to be wired from a PlayerInput (Behavior = Invoke Unity Events)
-    /// or by using the old SendMessage style with the Input System. The action should
-    /// be a Value type with Vector2 binding (e.g. WASD/left stick).
-    /// </summary>
-    /// <param name="value">InputValue provided by the Input System</param>
-    public void OnMove(InputValue value)
+    private void OnDisable()
     {
-        if (value == null) return;
-        moveInput = value.Get<Vector2>();
+        playerInput.actions.FindAction("Move").performed -= OnMove;
+        playerInput.actions.FindAction("Interact").canceled -= OnInteract;
+    }
+    
+    public void OnMove(InputAction.CallbackContext value)
+    {
+        moveInput = value.ReadValue<Vector2>();
     }
 
     void FixedUpdate()
@@ -102,12 +102,10 @@ public class PlayerController : MonoBehaviour
     public void SetCameraRelative(bool enabled) => cameraRelativeMovement = enabled;
     public void SetCameraTransform(Transform t) => cameraTransform = t;
 
-    private void Update()
+    private void OnInteract(InputAction.CallbackContext obj)
     {
-        if(Keyboard.current.eKey.wasPressedThisFrame)
-        {
             InteractOM.Interact();
-        }
+        
     }
 }
 

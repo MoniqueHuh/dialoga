@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+    
+    private int coins = 0;
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
@@ -11,21 +13,21 @@ public class Coin : MonoBehaviour
             if(player != null)
             {
                 AddCoin();
+                PlayerOM.CollectCoin();
             }
 
             Destroy(gameObject);
         }
     }
-    private int coins = 0;
+    
 
     public void AddCoin()
-    {
-        coins++;
+    {        
 
         Debug.Log("Moedas: " + coins);
 
 
-        PlayerOM.CollectCoin(coins);
+        PlayerOM.CollectCoin();
     }
 }
 

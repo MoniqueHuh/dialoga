@@ -3,10 +3,10 @@ using System;
 public static class PlayerOM
 {
     // Evento de moedas
-    public static Action<int> OnCoinCollected;
+    public static event Action OnCoinCollected;
 
-    public static void CollectCoin(int currentCoins)
+    public static void CollectCoin()
     {
-        OnCoinCollected?.Invoke(currentCoins);
+        OnCoinCollected?.Invoke();
     }
 }

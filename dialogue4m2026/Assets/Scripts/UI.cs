@@ -16,7 +16,7 @@ public class UI : MonoBehaviour
         PlayerOM.OnCoinCollected -= AddCoin;
     }
 
-    private void AddCoin(int moedas)
+    private void AddCoin()
     {
         moedas ++;
         moedasText.text = moedas.ToString();
